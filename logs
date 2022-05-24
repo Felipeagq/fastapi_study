@@ -1,0 +1,6 @@
+INFO 2022-05-23 21:49:13,139 - {'path': 'http://localhost:5000/hola', 'request': None, 'response': {'title': 'Estudio', 'version': 'v0.0.0'}}
+INFO 2022-05-23 21:49:22,927 - {'path': 'http://localhost:5000/', 'request': {'test': 'prueba', '1': 'a'}, 'response': {'title': 'Estudio', 'version': 'v0.0.0'}}
+INFO 2022-05-23 21:50:02,052 - Shutting down
+INFO 2022-05-23 21:50:02,162 - Waiting for application shutdown.
+INFO 2022-05-23 21:50:02,163 - Application shutdown complete.
+INFO 2022-05-23 21:50:02,164 - Finished server process [2880]
