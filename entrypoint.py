@@ -3,6 +3,7 @@ from fastapi import FastAPI, Request
 import uvicorn
 from app.utils.settings import settings
 import logging
+from starlette.middleware.cors import CORSMiddleware
 
 # from app.routes.user_router import router as user_router
 
@@ -11,19 +12,19 @@ app = FastAPI(
     version="v0.0.0"
 )
 
-@app.get("/hola")
+if settings.BACKEND_CORS_ORIGINS:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_credentials=True,
+        allow_origins=["*"],
+        allow_methods=["*"],
+        allow_headers=["*"]
+    )
+
+
+@app.get("/")
 async def hello_check(request:Request):
 
-    response = {
-        "title":app.title,
-        "version":app.version
-    }
-    await settings.log(request,response)
-    return response
-
-@app.post("/")
-async def hello_check(request:Request):
-    
     response = {
         "title":app.title,
         "version":app.version
@@ -41,7 +42,7 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=5000,
         workers=1,
-        reload=False,
+        reload=True,
         # log_level= "debug",
         access_log=False,
         use_colors=True
