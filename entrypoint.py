@@ -5,7 +5,7 @@ from app.utils.settings import settings
 import logging
 from starlette.middleware.cors import CORSMiddleware
 
-# from app.routes.user_router import router as user_router
+from app.routes.user_router import router as user_router
 
 app = FastAPI(
     title="Estudio",
@@ -33,7 +33,7 @@ async def hello_check(request:Request):
     return response
   
 
-# app.include_router(user_router,prefix=settings.API_V1_STR)
+app.include_router(user_router,prefix=settings.API_V1_STR)
 
 
 if __name__ == "__main__":
